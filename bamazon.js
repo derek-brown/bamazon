@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
-var productAmt, selectedProduct;
+var productAmt, selectedProduct, productPrice;
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -39,7 +39,6 @@ function itemList(){
       purchaseItem(result);
     });
 	});
-  connection.end();
 }
 
 function purchaseItem(result){
@@ -61,10 +60,18 @@ function purchaseItem(result){
         console.log("You have selected the them " + result[j].product_name + "!");
         productAmt = result[j].stock_quantity;
         selectedProduct = result[j].product_name;
+        productPrice = result[j].item_price;
       }
     }
     if(productAmt-5 > response.amount){
       console.log("We have plenty in stock to meet your order!");
+      var calculateStock = productAmt-response.amount;
+      connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ?", [calculateStock, parseInt(response.selection)], function(err, result){
+          if (err) throw err;
+          console.log("Congradulations! You spent $" + response.amount * productPrice + ".00 on " + selectedProduct + ". Thank you and come again!");
+        }
+      );
+      connection.end();
     }else{
       console.log("Sorry! We don't have enough " + selectedProduct + ". Please choose another item!");
       purchaseItem(result);
