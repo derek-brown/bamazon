@@ -1,0 +1,27 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "A store front application meant to mimic popular online retailers through the use of node and mysql.",
+  "main": "bamazon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derek-brown/bamazon.git"
+  },
+  "keywords": [
+    "node",
+    "mysql"
+  ],
+  "author": "Derek E Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/derek-brown/bamazon/issues"
+  },
+  "homepage": "https://github.com/derek-brown/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0",
+    "mysql": "^2.15.0"
+  }
+}
