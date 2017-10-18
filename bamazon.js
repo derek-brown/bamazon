@@ -25,7 +25,7 @@ function itemList(){
     {
       name: "greeting",
       type: "inqut",
-      message: "Welcome!"
+      message: "Welcome! Press enter to begin!"
     }
     ]).then(function(response){
       for(var i=0; i<result.length; i++){
